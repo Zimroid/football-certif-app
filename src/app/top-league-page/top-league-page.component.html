@@ -1,0 +1,6 @@
+<app-nav-bar [countries]="countries"></app-nav-bar>
+
+<div *ngIf="!countryName; else table">Please select a country</div>
+<ng-template #table>
+    <app-top-league-table [isLoading]="isLoading" [standings]="standings"></app-top-league-table>
+</ng-template>

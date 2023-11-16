@@ -1,0 +1,9 @@
+<span *ngFor="let country of countries">
+    <button [id]="country.countryName + 'Select'" [routerLink]="['/', country.countryName]"
+        [routerLinkActive]="'active'">
+        {{country.countryName | titlecase }}
+    </button>
+</span>
+
+<br>
+<br>

@@ -1,0 +1,38 @@
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
+
+<ng-template #noResult>
+    No result found for this country :(
+</ng-template>
+
+<div *ngIf="!isLoading; else loading">
+    <ng-container *ngIf="standings.length > 0; then table else noResult"></ng-container>
+</div>
+
+<ng-template #table>
+    <table>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Name</th>
+            <th>Games</th>
+            <th>W</th>
+            <th>L</th>
+            <th>D</th>
+            <th>Goal Difference</th>
+            <th>Points</th>
+        </tr>
+        <tr *ngFor="let standing of standings">
+            <td>{{standing.rank}}</td>
+            <td><img [src]="standing.logoUrl"></td>
+            <td><a [routerLink]="['./', standing.teamId]">{{standing.name}}</a></td>
+            <td>{{standing.nbGamesPlayed}}</td>
+            <td>{{standing.nbWins}}</td>
+            <td>{{standing.nbLosses}}</td>
+            <td>{{standing.nbDraws}}</td>
+            <td>{{standing.nbGoalDifference}}</td>
+            <td>{{standing.nbPoints}}</td>
+        </tr>
+    </table>
+</ng-template>
